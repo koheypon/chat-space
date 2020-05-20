@@ -26,36 +26,33 @@ Things you may want to cover:
 usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
 |name|integer|null: false, unique: true|
 |mail|integer|null: false|
 |password|integer|null: false|
 ### Association
-- has_many :messages
-- belong_to :groups, through: :group_user
+- has_many :groups, through: :group_users
+- has_many :group_users
 
 messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|messages_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
-|text|integer|null: false, foreign_key: true|
+|group_id|integer|null: false|
+|user_id|integer|null: false|
+|text|text|null: false|
 |img|string|
 ### Association
 - belong_to :users
 - has_many :groups, through: :group_user
 
-groupsテーブル
+groupテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|integer|null: false, unique: true|
-|number_id|integer|null: false|
-|message_id|integer|null: false|
+|name|int|null: false, unique: true|
 ### Association
 - has_many :users
 - belong_to :messages
 
-group_userテーブル
+group_usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
