@@ -32,8 +32,7 @@ usersテーブル
 |password|integer|null: false|
 ### Association
 - has_many :messages
-- belong_to :groups
-- has_many :group_user
+- belong_to :groups, through: :group_user
 
 messagesテーブル
 |Column|Type|Options|
@@ -44,8 +43,7 @@ messagesテーブル
 |img|string|
 ### Association
 - belong_to :users
-- has_many :groups 
-- has_many :group_user
+- has_many :groups, through: :group_user
 
 groupsテーブル
 |Column|Type|Options|
