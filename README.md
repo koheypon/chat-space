@@ -32,25 +32,26 @@ usersテーブル
 ### Association
 - has_many :groups, through: :group_users
 - has_many :group_users
+- has_many :messages
 
 messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_id|integer|null: false|
-|user_id|integer|null: false|
-|text|text|null: false|
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|text|text|
 |img|string|
 ### Association
 - belong_to :users
-- has_many :groups, through: :group_user
+- belong_to :groups, through: :group_user
 
 groupテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|int|null: false, unique: true|
 ### Association
-- has_many :users
-- belong_to :messages
+- has_many :users, through: :group_user
+- has_many :messages
 
 group_usersテーブル
 |Column|Type|Options|
@@ -58,5 +59,5 @@ group_usersテーブル
 |user_id|integer|null: false, foreign_key: true|
 |messages_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :group
-- belongs_to :user
+- belongs_to :group, through: :group_user
+- belongs_to :user, through: :group_user
