@@ -43,21 +43,22 @@ messagesテーブル
 |img|string|
 ### Association
 - belong_to :users
-- belong_to :groups, through: :group_user
+- belong_to :groups
 
 groupテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|int|null: false, unique: true|
 ### Association
-- has_many :users, through: :group_user
+- has_many :users, through: :group_userss
+- has_many :group_users
 - has_many :messages
 
 group_usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|messages_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :group, through: :group_user
-- belongs_to :user, through: :group_user
+- belongs_to :group
+- belongs_to :user
