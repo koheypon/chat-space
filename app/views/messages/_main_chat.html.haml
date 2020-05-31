@@ -1,0 +1,31 @@
+.main-chat
+  .header
+    .header__left
+      %h2.header__left__group
+        txst
+      %ul.header__left__number
+        number :
+        %li.header__left__number--list
+          グループメンバー名
+    .header__right
+      = link_to "/#" do
+        .header__right__btn
+          Edit
+  .boby
+    .message
+      .message__name
+        %p.message__name--date
+          名前
+        %p.message__name--time
+          2020/05/28(Wed) 12:12:12
+      .message__text
+        投稿した内容
+  .footer
+    .new-message
+      .input-box
+        %input.input-box__text{type: "text", placeholder: "type a message"}
+        %label{class: "input-box__img"}
+          = icon("fas","image")
+          %input{type: "file"}
+      %input.input-btn{type: "submit", value: "Send"}
+        
