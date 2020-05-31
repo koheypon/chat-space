@@ -16,11 +16,18 @@
         margin-left: 20px;
         padding-top: 40px;
         justify-content: space-between;
-      }
         &--name {
           position: absolute;
           right: 0;
         }
+        .side-bar__header__box--icon{
+          display: flex;
+          .icon{
+            color: #ffffff;
+            margin-right: 5px;
+          }
+        }
+      }
     }
     &__footer{
       background-color: #2f3e51;
