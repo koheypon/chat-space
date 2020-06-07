@@ -2,17 +2,19 @@
   .header
     .header__left
       %h2.header__left__group
-        txst
+        = @group.name
       %ul.header__left__number
         number :
         %li.header__left__number--list
-          グループメンバー名
+          - @group.user.each do |user|
+            = user.name
     .header__right
-      = link_to "/#" do
+      = link_to edit_group_path(@group.id) do
         .header__right__btn
           Edit
   .boby
     .message
+      = render @messages
       .message__name
         %p.message__name--date
           名前
@@ -20,12 +22,13 @@
           2020/05/28(Wed) 12:12:12
       .message__text
         投稿した内容
-  .footer
-    .new-message
-      .input-box
-        %input.input-box__text{type: "text", placeholder: "type a message"}
-        %label{class: "input-box__img"}
-          = icon("fas","image")
-          %input{type: "file"}
-      %input.input-btn{type: "submit", value: "Send"}
+  .from
+    = form_for [@group, @message] do |f|
+      .new-message
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__img' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'input-btn'
+
         

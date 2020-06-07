@@ -90,6 +90,7 @@
       width: 100%;
       background-color: #fafafa;
       padding: 46px 40px;
+      overflow: scroll;
       .message{
         margin-bottom: 40px;
         &__name{
@@ -113,30 +114,35 @@
         }
       }
     }
-    .footer{
+    .from{
       height: 90px;
       width: 100%;
       background-color: #d2d2d2;
       padding: 20px 40px;
-      .new-message{
+
+      .new_message{
         display: flex;
-        .input-box{
+
+        .new-message{
           position: relative;
           width: 100%;
-          &__text{
+
+          .form__message{
             height: 50px;
             width: 100%;
             padding: 0 40px 0 10px;
             color: #434a54;
             border-style: none;
           }
-          &__img{
+          
+          .input-box__img{
             font-size: 1.3rem;
             position: absolute;
             top: 10px;
             right: 10px;
             cursor: pointer;
-            .fa-image{
+              
+            .icon{
               -webkit-font-smoothing: antialiased;
               display: inline-block;
               font-style: normal;
@@ -144,19 +150,20 @@
               text-rendering: auto;
               line-height: 1;
             }
-            input{
+      
+            .hidden{
               display: none;
             }
           }
         }
-        .input-btn{
-          width: 100px;
-          height: 50px;
-          padding: 0 30px;
-          margin-left: 15px;
-          background-color: #38aef0;
-          color: white;
-        }
+      }
+      .input-btn{
+        width: 100px;
+        height: 50px;
+        padding: 0 30px;
+        margin-left: 15px;
+        background-color: #38aef0;
+        color: white;
       }
     }
   }
