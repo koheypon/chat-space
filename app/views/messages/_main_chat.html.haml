@@ -6,7 +6,7 @@
       %ul.header__left__number
         number :
         %li.header__left__number--list
-          - @group.user.each do |user|
+          - @group.users.each do |user|
             = user.name
     .header__right
       = link_to edit_group_path(@group.id) do
@@ -17,11 +17,8 @@
       = render @messages
       .message__name
         %p.message__name--date
-          名前
         %p.message__name--time
-          2020/05/28(Wed) 12:12:12
       .message__text
-        投稿した内容
   .from
     = form_for [@group, @message] do |f|
       .new-message
