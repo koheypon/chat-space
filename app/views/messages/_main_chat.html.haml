@@ -15,10 +15,7 @@
   .boby
     .message
       = render @messages
-      .message__name
-        %p.message__name--date
-        %p.message__name--time
-      .message__text
+
   .from
     = form_for [@group, @message] do |f|
       .new-message
