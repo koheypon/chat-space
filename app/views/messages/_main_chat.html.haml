@@ -6,7 +6,7 @@
       %ul.header__left__number
         number :
         %li.header__left__number--list
-          - @group.user.each do |user|
+          - @group.users.each do |user|
             = user.name
     .header__right
       = link_to edit_group_path(@group.id) do
@@ -15,7 +15,7 @@
 
   .body
     = render @messages
-      
+
   .from
     = form_for [@group, @message] do |f|
       .new-message
