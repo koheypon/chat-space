@@ -12,9 +12,9 @@
       = link_to edit_group_path(@group.id) do
         .header__right__btn
           Edit
-  .boby
-      = render @messages
-
+  .body
+    = render @messages
+      
   .from
     = form_for [@group, @message] do |f|
       .new-message
