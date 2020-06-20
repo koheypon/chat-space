@@ -2,22 +2,22 @@ $(function(){
   function buildHTML(message){
     if ( message.image ) {
       var html =
-       `<div class="message">
-          <div class="message__name">
-            <div class="message__name--date">
-              ${message.user_name}
-            </div>
-            <div class="message__name--time">
-              ${message.created_at}
-            </div>
-          </div>
-          <div class="message__text">
-            <p class="lower-message__content">
-              ${message.content}
-            </p>
-          </div>
-          <img src=${message.image} >
-        </div>`
+               `<div class="message">
+                  <div class="message__name">
+                    <div class="message__name--date">
+                      ${message.user_name}
+                    </div>
+                    <div class="message__name--time">
+                      ${message.created_at}
+                    </div>
+                  </div>
+                  <div class="message__text">
+                    <p class="lower-message__content">
+                      ${message.content}
+                    </p>
+                  </div>
+                  <img src=${message.image} >
+              </div>`
       return html;
     } else {
       var html =
@@ -63,5 +63,73 @@ $(function(){
       alert("メッセージ送信に失敗しました");
     });
   })
-  
+
+  function buildHTML(message){
+    if ( message.image ) {
+        //data-idが反映されるようにしている
+        var html =
+         `<div class="message" data-message-id=${message.id}>
+            <div class="message__name">
+              <div class="message__name--data">
+                ${message.user_name}
+              </div>
+              <div class="message__name--time">
+                ${message.created_at}
+              </div>
+            </div>
+            <div class="message__text">
+              <p class="lower-message__content">
+                ${message.content}
+              </p>
+            </div>
+            <img src=${message.image} >
+          </div>`
+        return html;
+      } else {
+        //同様にdata-idが反映されるようにしている
+        var html =
+         `<div class="message" data-message-id=${message.id}>
+            <div class="message__name">
+              <div class="message__name--date">
+                ${message.user_name}
+              </div>
+              <div class="message__name--time">
+                ${message.created_at}
+              </div>
+            </div>
+            <div class="message__text">
+              <p class="lower-message__content">
+                ${message.content}
+              </p>
+            </div>
+          </div>`
+        return html;
+      };
+    }
+
+  var reloadMessages = function() {
+    var last_message_id = $('.message:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.messages').append(insertHTML);
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      }
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
