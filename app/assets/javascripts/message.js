@@ -57,11 +57,14 @@ $(function(){
       $('.body').append(html);
       $('form')[0].reset();
       $('.body').animate({ scrollTop: $('.body')[0].scrollHeight});
-      $('.input-btn').prop("disabled", false);
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
-    });
+    })
+
+    .always(function(){
+      $('.input-btn').prop("disabled", false);
+    })
   })
 
   function buildHTML(message){
