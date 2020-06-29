@@ -32,19 +32,24 @@
       background-color: #2f3e51;
       height: calc(100% - 100px);
       width: 300px;
+      a{
+        text-decoration: none;
+      }
       &__group{
         margin-left: 20px;
-        text-decoration: none;
+        border: 0px none;
         &__name{
           font-size: 15px;
           padding-top: 20px;
           color: #ffffff;
+          border: 0px none;
         }
         &__list{
           font-size: 11px;
           margin-top: 5px;
           margin-bottom: 40px;
           color: #ffffff;
+          text-decoration: none;
         }
       }
     }
